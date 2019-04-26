@@ -2,7 +2,7 @@
 FROM rkitchen/excerpt:latest
 
 # Install python dev and pandoc:
-RUN yum install -y python36-devel.x86_64 python36-setuptools pandoc.x86_64
+RUN yum install -y python36-devel.x86_64 python36-setuptools pandoc.x86_64 git
 
 # Install pip3:
 RUN easy_install-3.6 pip
