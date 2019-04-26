@@ -5,7 +5,7 @@ workflow SingleSampleExcerptRun {
     File genome_database
 
     call executeExcerpt {
-        inputs:
+        input:
             fastq = fastq,
             genome_id = genome_id,
             genome_database = genome_database

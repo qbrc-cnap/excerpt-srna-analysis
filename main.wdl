@@ -26,6 +26,10 @@ workflow ExcerptSmallRna {
 
     call reporting.generate_report as generate_report {
         input:
+            fastq_files = fastq_files,
+            genome = genome_id,
+            git_repo_url = git_repo_url,
+            git_commit_hash = git_commit_hash
     }
 
     call zip_results {

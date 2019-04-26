@@ -1,0 +1,9 @@
+{
+  "ExcerptSmallRna.fastq_files": "Array[File]",
+  "ExcerptSmallRna.output_zip_name": "String",
+  "ExcerptSmallRna.genome_id": "String",
+  "ExcerptSmallRna.git_commit_hash": "String",
+  "ExcerptSmallRna.git_repo_url": "String",
+  "ExcerptSmallRna.excerpt_genome_database": "File"
+}
+
