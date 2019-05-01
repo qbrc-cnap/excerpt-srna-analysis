@@ -25,7 +25,7 @@ class InputDisplay(object):
     '''
     def __init__(self, sample_name, fq):
         self.sample_name = sample_name
-        self.fastq = fq
+        self.fastq = os.path.basename(fq)
 
 
 def get_jinja_template(template_path):
