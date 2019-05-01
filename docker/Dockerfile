@@ -30,7 +30,11 @@ RUN R -e "source('http://bioconductor.org/biocLite.R'); biocLite('marray'); bioc
 
 RUN mkdir /opt/scripts
 ADD merge_runs.R /opt/scripts/
-ADD mergePipelineRuns_functions.R /opt/scripts/ 
+ADD mergePipelineRuns_functions.R /opt/scripts/
+
+# add script for the pre-check routine:
+RUN mkdir /opt/software/precheck 
+ADD check_fastq.py /opt/software/precheck/
 
 # The script for generating the markdown report:
 ADD generate_report.py /usr/local/bin/
