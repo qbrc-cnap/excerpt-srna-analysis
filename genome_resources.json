@@ -1,8 +1,8 @@
 {
-    "Human hg38":{
+    "hg38":{
         "excerpt_resources": "gs://cnap-hsph-resources/excerpt/hg38/exceRptDB_v4_hg38_lowmem.tgz"
     },
-    "Mouse mm10":{
+    "mm10":{
         "excerpt_resources": "gs://cnap-hsph-resources/excerpt/mm10/exceRptDB_v4_mm10_lowmem.tgz"
     }
 }
