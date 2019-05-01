@@ -54,15 +54,18 @@ workflow ExcerptSmallRna {
 
 task merge_outputs {
 
-    Array[File] core_results
-    String output_dir = "/merged_excerpt_outputs"
+    Array[Array[File]] core_results
+    String output_dir = "merged_excerpt_outputs"
 
     Int disk_size = 100
 
+    Array[File] flat_core_results = flatten(core_results)
+
     command {
-        mkdir /target_dir
-        mv ${sep=" " core_results} /target_dir
-        Rscript /opt/scripts/merge_runs.R /target_dir ${output_dir}
+        mkdir ./target_dir
+        mkdir ${output_dir}
+        mv -t ./target_dir ${sep=" " flat_core_results}
+        Rscript /opt/scripts/merge_runs.R ./target_dir ${output_dir}
     }
 
     output {
