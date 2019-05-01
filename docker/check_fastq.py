@@ -84,20 +84,19 @@ def get_commandline_args():
 
 if __name__ == '__main__':
     arg_dict = get_commandline_args()
-    fastqs = arg_dict[FQ]
+    fastq_filepath = arg_dict[FQ]
 
     # collect the error strings into a list, which we will eventually dump to stderr
     err_list = []
 
-    for fastq_filepath in fastqs:
-        # check that fastq in gzip:
-        err_list.extend(check_gzip_format(fastq_filepath))
+    # check that fastq in gzip:
+    err_list.extend(check_gzip_format(fastq_filepath))
 
-        # check the fastq format
-        err_list.extend(check_fastq_format(fastq_filepath))
+    # check the fastq format
+    err_list.extend(check_fastq_format(fastq_filepath))
 
-        # check that read lengths are consistent with Illumina:
-        err_list.extend(catch_very_long_reads(fastq_filepath))
+    # check that read lengths are consistent with Illumina:
+    err_list.extend(catch_very_long_reads(fastq_filepath))
 
     if len(err_list) > 0:
         sys.stderr.write('#####'.join(err_list)) # the 5-hash delimiter since some stderr messages can be multiline
