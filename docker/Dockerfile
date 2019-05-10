@@ -25,7 +25,7 @@ ADD requirements.txt /opt/software/
 RUN pip3 install -r /opt/software/requirements.txt
 
 # Install the dependencies for the R scripts:
-RUN R -e "baseURL = 'https://cran.r-project.org'; install.packages('plyr',repos=baseURL);install.packages('gplots',repos=baseURL); install.packages('reshape2',repos=baseURL);install.packages('ggplot2',repos=baseURL);install.packages('tools',repos=baseURL); install.packages('scales',repos=baseURL);"
+RUN R -e "baseURL = 'https://cran.r-project.org'; install.packages('plyr',repos=baseURL);install.packages('gplots',repos=baseURL); install.packages('reshape2',repos=baseURL);install.packages('ggplot2',repos=baseURL);install.packages('tools',repos=baseURL); install.packages('scales',repos=baseURL); install.packages('ggthemes', repos=baseURL); install.packages('reshape', repos=baseURL)"
 RUN R -e "source('http://bioconductor.org/biocLite.R'); biocLite('marray'); biocLite('Rgraphviz')"
 
 RUN mkdir /opt/scripts

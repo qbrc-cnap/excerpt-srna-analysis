@@ -36,7 +36,8 @@ workflow ExcerptSmallRna {
         input:
             zip_name = output_zip_name,
             all_excerpt_files = merge_outputs.all_outputs,
-            report = generate_report.report
+            report = generate_report.report,
+            qc_figs = merge_outputs.qc_figures
     }
 
     output {
@@ -56,6 +57,7 @@ task merge_outputs {
 
     Array[Array[File]] core_results
     String output_dir = "merged_excerpt_outputs"
+    String figs_dir = "figs"
 
     Int disk_size = 100
 
@@ -66,10 +68,14 @@ task merge_outputs {
         mkdir ${output_dir}
         mv -t ./target_dir ${sep=" " flat_core_results}
         Rscript /opt/scripts/merge_runs.R ./target_dir ${output_dir}
+
+        # create some QC figures:
+        Rscript /opt/scripts/exceRpt_QC_summary.R ${output_dir} ${figs_dir}
     }
 
     output {
         Array[File] all_outputs = glob("${output_dir}/*")
+        Array[File] qc_figures = glob("${figs_dir}/*")
     }
 
     runtime {
@@ -86,6 +92,7 @@ task zip_results {
 
     String zip_name 
     Array[File] all_excerpt_files
+    Array[File] qc_figs
     File report
 
     Int disk_size = 50
@@ -94,9 +101,11 @@ task zip_results {
 
         mkdir report
         mkdir report/exceRpt_output
+        mkdir report/figures # needs to be 'figures' for the linking to work
 
         mv ${report} report/
         mv -t report/exceRpt_output ${sep=" " all_excerpt_files}
+        mv -t report/figures ${sep=" " qc_figs}
 
         zip -r "${zip_name}.zip" report
     }

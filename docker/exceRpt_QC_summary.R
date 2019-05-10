@@ -3,22 +3,16 @@ library(ggthemes)
 library(plyr)
 library(scales)
 library(reshape)
-#library(cccbDGEpipeline)
 
 args = commandArgs(trailingOnly=TRUE)
 
-PROJECT_DIR=args[1]
-# this is the test directory
-PROJECT_DIR='/Users/yaoyuwang/Desktop/report/'
-# end of test directory
-RESULT_DIR=paste0(PROJECT_DIR, "/exceRpt_output/")
+RESULTDIR=args[1]
+OUTDIR = args[2]
 
-# output directory
-OUTDIR=paste0(PROJECT_DIR, "Figures")
 ifelse(!dir.exists(OUTDIR), dir.create(OUTDIR), FALSE)
 
 # read in mapping statistics
-mapping.stats=read.table(paste0(RESULT_DIR, "exceRpt_readMappingSummary.txt"))
+mapping.stats=read.table(paste0(RESULTDIR, "/", "exceRpt_readMappingSummary.txt"))
 # limit the sample name to 20 characters
 rownames(mapping.stats)=substr(rownames(mapping.stats),0,20)
 
@@ -124,6 +118,3 @@ qc_sRNA_mapping_count=ggplot(mapping.stats_sRNA_melt, aes(x=Sample, y=value, fil
 ggsave(paste(OUTDIR,"sRNA_sense_mapping_count.png", sep="/"), 
        plot=qc_sRNA_mapping_count,
        width = 6, height = 4)
-
-
-

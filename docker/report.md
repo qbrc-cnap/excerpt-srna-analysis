@@ -14,21 +14,26 @@ The main results are contained in a zip-archive and should be downloaded an "unz
 Read mapping and filtering results are summarized in the following:
 
 Table 1. Read Counts for each RNA species 
-{}
+|Type | File|
+|---|---|
+|Gencode| [Table](exceRpt_output/exceRpt_gencode_ReadCounts.txt)|
+|miRNA| [Table](exceRpt_output/exceRpt_miRNA_ReadCounts.txt)|
+|piRNA| [Table](exceRpt_output/exceRpt_piRNA_ReadCounts.txt)|
+|tRNA| [Table](exceRpt_output/exceRpt_tRNA_ReadCounts.txt)|
 
 Figure 1a. Read count distribution by different filtering and mapping criteria
 
-{Figures/qc_postfilter_count.png}
+![](figures/qc_postfilter_count.png)
 
 Figure 1b. Read count percentage distribution by different filtering and mapping criteria
 
-{Figures/qc_postfilter_perc.png}
+![](figures/qc_postfilter_perc.png)
 
 Figure 2. sRNA class read distribution per samples
-{Figures/sRNA_all_mapping_count.png}
+![](figures/sRNA_all_mapping_count.png)
 
 Figure 3. Sense sRNA read counts per samples
-{Figures/sRNA_senseonly_count.png}
+![](figures/sRNA_sense_mapping_count.png)
 
 
 
