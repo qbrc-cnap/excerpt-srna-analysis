@@ -31,6 +31,7 @@ RUN R -e "source('http://bioconductor.org/biocLite.R'); biocLite('marray'); bioc
 RUN mkdir /opt/scripts
 ADD merge_runs.R /opt/scripts/
 ADD mergePipelineRuns_functions.R /opt/scripts/
+ADD exceRpt_QC_summary.R /opt/scripts/
 
 # add script for the pre-check routine:
 RUN mkdir /opt/software/precheck 
