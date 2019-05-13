@@ -14,6 +14,7 @@ The main results are contained in a zip-archive and should be downloaded an "unz
 Read mapping and filtering results are summarized in the following:
 
 Table 1. Read Counts for each RNA species 
+
 |Type | File|
 |---|---|
 |Gencode| [Table](exceRpt_output/exceRpt_gencode_ReadCounts.txt)|
