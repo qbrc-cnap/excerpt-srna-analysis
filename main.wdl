@@ -79,6 +79,7 @@ task merge_outputs {
     }
 
     runtime {
+        zones: "us-east4-c"
         docker: "docker.io/blawney/excerpt:v0.0.1"
         cpu: 6
         memory: "10 G"
@@ -115,6 +116,7 @@ task zip_results {
     }
 
     runtime {
+        zones: "us-east4-c"
         docker: "docker.io/blawney/excerpt:v0.0.1"
         cpu: 2
         memory: "6 G"

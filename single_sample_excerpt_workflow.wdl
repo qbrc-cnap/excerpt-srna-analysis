@@ -64,6 +64,7 @@ task executeExcerpt {
     }
 
     runtime {
+        zones: "us-east4-c"
         docker: "docker.io/blawney/excerpt:v0.0.1"
         cpu: 6
         memory: "30 G"

@@ -27,6 +27,7 @@ task assert_valid_fastq {
     >>>
 
     runtime {
+        zones: "us-east4-c"
         docker: "docker.io/blawney/excerpt:v0.0.1"
         cpu: 2
         memory: "6 G"
