@@ -4,6 +4,8 @@
   "ExcerptSmallRna.genome_id": "String",
   "ExcerptSmallRna.git_commit_hash": "String",
   "ExcerptSmallRna.git_repo_url": "String",
-  "ExcerptSmallRna.excerpt_genome_database": "File"
+  "ExcerptSmallRna.excerpt_genome_database": "File",
+  "ExcerptSmallRna.random_barcode_length": "Int",
+  "ExcerptSmallRna.adapter_sequence": "String"
 }
 

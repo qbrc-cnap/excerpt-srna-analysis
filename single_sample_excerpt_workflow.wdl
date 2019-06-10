@@ -3,12 +3,16 @@ workflow SingleSampleExcerptRun {
     File fastq
     String genome_id
     File genome_database
+    Int random_barcode_length
+    String adapter_sequence
 
     call executeExcerpt {
         input:
             fastq = fastq,
             genome_id = genome_id,
-            genome_database = genome_database
+            genome_database = genome_database,
+            random_barcode_length = random_barcode_length, 
+            adapter_sequence = adapter_sequence
     }
 
     output {
@@ -22,6 +26,8 @@ task executeExcerpt {
     File fastq
     File genome_database
     String genome_id
+    Int random_barcode_length
+    String adapter_sequence
 
     # Extract the samplename from the fastq filename
     String sample_name = basename(fastq, "_R1.fastq.gz")
@@ -47,6 +53,9 @@ task executeExcerpt {
         # move the existing exceRpt database files TO under /cromwell_root
         mv /exceRpt_DB/* $DB_DIR/
 
+        # if nothing was given for adapter sequence, use the 'default' guess:
+        export AD_SEQ=$(python -c "x='${adapter_sequence}'; v ='guessKnown' if x=='' else x; print(v)")
+
         make -f /exceRpt_bin/exceRpt_smallRNA \
             EXE_DIR=/exceRpt_bin \
             DATABASE_PATH=$DB_DIR \
@@ -56,7 +65,9 @@ task executeExcerpt {
             N_THREADS=6 \
             INPUT_FILE_PATH=${fastq} \
             MAIN_ORGANISM_GENOME_ID=${genome_id} \
-            SAMPLE_NAME=${sample_name}
+            SAMPLE_NAME=${sample_name} \
+            ADAPTER_SEQ=$AD_SEQ \
+            RANDOM_BARCODE_LENGTH=${random_barcode_length}
     }
 
     output {

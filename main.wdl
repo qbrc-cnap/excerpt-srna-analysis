@@ -9,13 +9,17 @@ workflow ExcerptSmallRna {
     String output_zip_name
     String git_repo_url
     String git_commit_hash
+    Int random_barcode_length
+    String adapter_sequence
 
     scatter( fq in fastq_files ) {
         call single_sample_process.SingleSampleExcerptRun as ss_process{
             input:
                 fastq = fq,
                 genome_id = genome_id,
-                genome_database = excerpt_genome_database
+                genome_database = excerpt_genome_database,
+                random_barcode_length = random_barcode_length,
+                adapter_sequence = adapter_sequence
         }
     }
 

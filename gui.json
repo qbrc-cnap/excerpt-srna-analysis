@@ -15,6 +15,22 @@
 			}	
 		},
 		{
+			"target": "ExcerptSmallRna.adapter_sequence",
+			"display_element": {
+				"type": "text",
+				"label": "Adapter sequence",
+				"description":"Enter the library adapter sequence.  If blank, the software will attempt to guess the adapter based on several popular commercial kits."
+			}
+		},
+		{
+			"target": "ExcerptSmallRna.random_barcode_length",
+			"display_element": {
+				"type": "numeric",
+				"label": "Random barcode length",
+				"description":"Enter the length of any random barcodes.  For example, Bioo-prepared libraries have a random 4nt sequence which will be trimmed prior to alignment."
+			}
+		},
+		{
 			"target": {
 				"target_ids": ["ExcerptSmallRna.genome_id", 
 					"ExcerptSmallRna.excerpt_genome_database"
